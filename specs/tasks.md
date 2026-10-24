@@ -2,4 +2,13 @@
 
 | ID | Tarefa | Origem | Depende de | Concluída quando |
 |---|---|---|---|---|
-| T-01 | Criar projeto e estrutura de pastas | Constituição | | Projeto compila |
+| T-01 | Criar o projeto e a estrutura de pastas conforme a Constituição. | Constituição | — | O projeto compila e sua estrutura respeita as regras arquiteturais definidas na Constituição. |
+| T-02 | Criar o banco de dados SQLite com o nome `SenhasFortes`. | Plano | T-01 | O arquivo do banco é criado no local definido e pode ser aberto por uma conexão SQLite. |
+| T-03 | Criar a tabela `Senhas`, com as colunas `Id` (`TEXT PRIMARY KEY`) e `Senha` (`TEXT NOT NULL`). | Plano | T-02 | A tabela existe no banco e possui as colunas e restrições especificadas. |
+| T-04 | Criar a API `GerenciarSenhas` com a estrutura necessária para receber requisições HTTP. | Especificação | T-01 | A aplicação inicia e um endpoint HTTP pode ser acessado. |
+| T-05 | Implementar um endpoint POST que não recebe nenhum parâmetro e gera uma senha utilizando um gerador criptograficamente seguro. A senha deve ter pelo menos 16 caracteres e não pode conter espaços em branco. As senha terão aleatóriamente entre 16 e 32 caracteres | Especificação | T-04 | Uma requisição válida gera uma senha que atende a todos os requisitos definidos na especificação. |
+| T-06 | Criar testes unitários automatizados para verificar as regras de geração de senhas. | Especificação | T-05 | Os testes verificam o tamanho mínimo, os caracteres permitidos e a ausência de espaços. A implementação utiliza a fonte criptográfica especificada. |
+| T-07 | Persistir a senha gerada no banco SQLite. Gerar um GUID para o registro, armazená-lo na coluna `Id` como texto e salvar a senha na coluna `Senha`. | Especificação e plano de persistência | T-03, T-06 | Após a geração, o banco contém um registro com o GUID e a senha correspondentes, e ambos podem ser recuperados. |
+| T-08 | Implementar um endpoint GET que recebe um GUID, consulta a tabela `Senhas` e retorna a senha associada ao identificador. | Especificação | T-07 | Um identificador existente retorna a senha correspondente; um GUID inválido e um registro inexistente recebem as respostas HTTP definidas na especificação. |
+| T-09 | Criar testes automatizados de integração para verificar o fluxo completo de geração, persistência e recuperação de senhas. | Especificação | T-07, T-08 | Os testes verificam o fluxo POST → persistência → GET, a correspondência entre identificador e senha e os cenários de erro definidos na especificação. |
+| T-10 | Adicionar e configurar o Swagger para documentar e permitir a exploração dos endpoints da API. | Plano | T-04, T-05, T-08 | A interface Swagger está acessível, apresenta os endpoints implementados e permite executar as operações documentadas. |
