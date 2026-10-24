@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/tests/">
+    <Project Path="tests/GerenciarSenhas.IntegrationTests/GerenciarSenhas.IntegrationTests.csproj" />
+    <Project Path="tests/GerenciarSenhas.UnitTests/GerenciarSenhas.UnitTests.csproj" />
+  </Folder>
+  <Project Path="GerenciarSenhas.Api/GerenciarSenhas.Api.csproj" />
+  <Project Path="GerenciarSenhas.Application/GerenciarSenhas.Application.csproj" />
+  <Project Path="GerenciarSenhas.Infrastructure/GerenciarSenhas.Infrastructure.csproj" />
+</Solution>

@@ -12,3 +12,5 @@
 | T-08 | Implementar um endpoint GET que recebe um GUID, consulta a tabela `Senhas` e retorna a senha associada ao identificador. | Especificação | T-07 | Um identificador existente retorna a senha correspondente; um GUID inválido e um registro inexistente recebem as respostas HTTP definidas na especificação. |
 | T-09 | Criar testes automatizados de integração para verificar o fluxo completo de geração, persistência e recuperação de senhas. | Especificação | T-07, T-08 | Os testes verificam o fluxo POST → persistência → GET, a correspondência entre identificador e senha e os cenários de erro definidos na especificação. |
 | T-10 | Adicionar e configurar o Swagger para documentar e permitir a exploração dos endpoints da API. | Plano | T-04, T-05, T-08 | A interface Swagger está acessível, apresenta os endpoints implementados e permite executar as operações documentadas. |
+
+| T-11 | Ao rodar o projeto ele abrirá automaticamente na página do swagger | Plano | T-108 | Ao startar o projeto o usuário ser direcionado a página do swagger |
